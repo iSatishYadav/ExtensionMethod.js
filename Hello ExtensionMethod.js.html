@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <title>Understanding ExtensionMethod.js</title>
+</head>
+
+<body>
+    <script src="src/ExtensionMethod.js"> </script>
+    <script>
+
+        var Person = function (first, last, age) {
+            this.firstName = first;
+            this.lastName = last;
+            this.age = age;
+        }
+
+        var person = {
+            "firstName" : "Satish",
+            "lastName" : "Yadav",
+        };
+        
+        // Adding an extension method to any object of type Person
+        // Method name will be "SayMyName"
+        // The method body of SayMyName is defined as third parameter
+        new ExtensionMethod()
+        .Add(Person, "SayMyName", function () {
+           console.log("Extension Method called. First Name: " +  this.firstName + " and Last Name: " + this.lastName);
+           alert("Extension Method called. First Name: " +  this.firstName + " and Last Name: " + this.lastName);
+        });
+
+        new ExtensionMethod()
+        .Add(person, "SayMyName", function () {
+            console.log("Extension Method called. First Name: " +  this.firstName + " and Last Name: " + this.lastName);
+           alert("Extension Method called. First Name: " +  this.firstName + " and Last Name: " + this.lastName);
+        });
+
+        var x = new Person("S", "Y", 10);
+        x.SayMyName();
+        person.SayMyName();
+
+    </script>
+</body>
+
+</html>
